@@ -1,5 +1,6 @@
 Fortran codes for spherical harmonic synthesis of ocean tidal load effects on all-element geodetic variations
 Chuanyin Zhang, zhangchy@casm.ac.cn, Chinese Academy of Surveying & Mapping
+
 [Algorithm purpose]
 Using the global ocean tidal load spherical harmonic coefficient model (cm), and given the longitude, latitude, orthometric height and forecast time of the calculation point, predict the sea surface tidal height (cm) and compute the ocean tidal load effects on the geoid or height anomaly (mm), ground gravity (μGal), gravity disturbance (μGal), ground tilt (SW, to the south and to the west, mas), vertical deflection (SW, to the south and to the west, mas), horizontal displacement (EN, to the east and to the north, mm), ground radial displacement (mm), ground normal or orthometric height (mm), radial gravity gradient (10μE) or horizontal gravity gradient (NW, to the north and to the west, 10μE).
 Expand and improve the ocean tidal load effect algorithm in the IERS conventions (2010) to adapt to all-element geodetic variations in the whole Earth space.
@@ -16,6 +17,7 @@ The calculation point can be on the ground, low altitude, satellite, ocean or un
   Otdloalharmsynth.f90
   The record of the test output file reslt.txt: the difference between the MJD day and starting MJD0, tdh, tdn(1:14)
   The test program reads two geophysical models into memory in advance, The calculation time for one calculation point is about 25 ms when the maximum trucated degree set as 120.
+
 [Four core modules]
  (1) Algorithm module for global ocean tidal height forecast by spherical harmonic synthesis
   otidehsynth(mjd,BLH,tdh,fes,nn,maxn,GRS)
@@ -40,9 +42,10 @@ The calculation point can be on the ground, low altitude, satellite, ocean or un
 [Eight auxiliary modules]
  (5) Algorithm module for the nodal corrections of the tidal constituent
   CalcTidefu(mjd,doodson,df,du)
+  Input parameters: doodson(6) - Doodson constants of the tidal constituent.
+  Return parameters: df,du - the nodal factor and nodal correction angle (degree) of the tidal constituent.
  (6) Algorithm module for the phase bias of the tidal constituent
   BiasTide(doodson,bias)
-  Input parameters: doodson(6) - Doodson constants of the tidal constituent.
   Return: bias - the phase bias (degree) of the tidal constituent.
  (7) Algorithm module for the 5 basic astronomical mean longitudes
   ASTRO5(TIME,SHPNP) ! s, h, p, N, p'
