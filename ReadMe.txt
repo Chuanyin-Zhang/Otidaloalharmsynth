@@ -62,7 +62,7 @@ The calculation point can be on the ground, low altitude, satellite, ocean or un
   
 [For compile and link]
   Fortran90, 132 Columns fixed format. Fortran compiler for any operating system. No external link library required.
-[Algorithmic formula] ETideLoad4.5 User Reference
+[Algorithmic formula] ETideLoad4.5 User Reference (https://www.zcyphygeodesy.com/en/)
   8.4.1 Construction of tidal load spherical harmonic coefficient model
   8.2.2 The normalized spherical harmonic series expansion for surface load deformation field
   8.2.3 The normalized associated Legendre functions and thier derivatives
